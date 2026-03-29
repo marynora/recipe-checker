@@ -8,7 +8,6 @@ import {
   Button,
   SimpleGrid,
 } from "@chakra-ui/react";
-import backArrow from "./back-arrow.png";
 import { ColorModeButton } from "../components/ui/color-mode";
 
 export const RecipePage = ({ recipe, selectRecipe }) => {
@@ -37,7 +36,7 @@ window.scrollTo(0, 0);
             p={0}
             minW="auto"
           >
-            <Image src={backArrow} alt="Back" boxSize="22px" />
+            <Image src="/back-arrow.png" alt="Back" boxSize="22px" />
           </Button>
 
           <Box textAlign="center">
@@ -79,16 +78,13 @@ window.scrollTo(0, 0);
                 {recipe.label}
               </Heading>
 
-              
-
               <Stack pt={1} direction="column" gap={1} align="stretch">
-                <Text fontSize="md"
-              >
-                Dish type:{" "}
-                <Text as="span" fontWeight="medium">
-                  {recipe.dishType[0]}
+                <Text fontSize="md">
+                  Dish type:{" "}
+                  <Text as="span" fontWeight="medium">
+                    {recipe.dishType[0]}
+                  </Text>
                 </Text>
-              </Text>
 
                 {recipe.totalTime > 0 && (
                   <Text fontSize="md">

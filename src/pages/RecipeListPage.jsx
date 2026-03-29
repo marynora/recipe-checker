@@ -62,6 +62,7 @@ return (labelMatch || healthLabelMatch) && filterMatch;
           </Heading>
 
           <Input
+            name="search"
             placeholder="Search recipes"
             value={searchField}
             onChange={(event) => setSearchField(event.target.value)}

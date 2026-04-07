@@ -17,7 +17,8 @@ export const RecipePage = ({ recipe, selectRecipe }) => {
   }, []);
 
   return (
-    <Box minH="100vh" bg={{ base: "orange.200", _dark: "gray.900" }} py={0}>
+    <Box minH="100vh" bg={{ base: "orange.200", _dark: "gray.900" }} py={4}
+    pt={4}>
       <Box
         w="100%"
         maxW="760px"

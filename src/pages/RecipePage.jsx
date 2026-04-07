@@ -8,10 +8,13 @@ import {
   Button,
   SimpleGrid,
 } from "@chakra-ui/react";
+import { useEffect } from "react";
 import { ColorModeButton } from "../components/ui/color-mode";
 
 export const RecipePage = ({ recipe, selectRecipe }) => {
-window.scrollTo(0, 0);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <Box minH="100vh" bg={{ base: "orange.200", _dark: "gray.900" }} py={0}>

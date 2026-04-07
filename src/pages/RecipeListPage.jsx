@@ -84,6 +84,9 @@ return (labelMatch || healthLabelMatch) && filterMatch;
           mb={10}
         >
           <Badge
+            px={3}
+            py={2}
+            fontSize="sm"
             cursor="pointer"
             bg={
               selectedFilter === "all"
@@ -91,12 +94,15 @@ return (labelMatch || healthLabelMatch) && filterMatch;
                 : { base: "gray.200", _dark: "gray.600" }
             }
             color={{ base: "gray.800", _dark: "white" }}
-            onClick={() => setSelectedFilter("all")} 
+            onClick={() => setSelectedFilter("all")}
           >
             All
           </Badge>
 
           <Badge
+            px={3}
+            py={2}
+            fontSize="sm"
             cursor="pointer"
             bg={
               selectedFilter === "vegan"
@@ -110,6 +116,9 @@ return (labelMatch || healthLabelMatch) && filterMatch;
           </Badge>
 
           <Badge
+            px={3}
+            py={2}
+            fontSize="sm"
             cursor="pointer"
             bg={
               selectedFilter === "vegetarian"
@@ -123,6 +132,9 @@ return (labelMatch || healthLabelMatch) && filterMatch;
           </Badge>
 
           <Badge
+            px={3}
+            py={2}
+            fontSize="sm"
             cursor="pointer"
             bg={
               selectedFilter === "pescatarian"
@@ -191,26 +203,17 @@ return (labelMatch || healthLabelMatch) && filterMatch;
                       textTransform="uppercase"
                     >
                       {recipe.healthLabels.includes("Vegan") && (
-                        <Badge
-                          colorPalette="purple"
-                          fontWeight="bold"
-                        >
+                        <Badge colorPalette="purple" fontWeight="bold">
                           Vegan
                         </Badge>
                       )}
                       {recipe.healthLabels.includes("Vegetarian") && (
-                        <Badge
-                        colorPalette="purple"
-                          fontWeight="bold"
-                        >
+                        <Badge colorPalette="purple" fontWeight="bold">
                           Vegetarian
                         </Badge>
                       )}
                       {recipe.healthLabels.includes("Pescatarian") && (
-                        <Badge
-                         colorPalette="purple"
-                          fontWeight="bold"
-                        >
+                        <Badge colorPalette="purple" fontWeight="bold">
                           Pescatarian
                         </Badge>
                       )}

@@ -148,130 +148,141 @@ return (labelMatch || healthLabelMatch) && filterMatch;
           </Badge>
         </Stack>
 
-        <SimpleGrid columns={{ base: 1, sm: 2, lg: 4 }} gap={8}>
-          {filteredRecipes.map((item) => {
-            const recipe = item.recipe;
+        {filteredRecipes.length === 0 ? (
+          <Text
+            textAlign="center"
+            fontSize="2xl"
+            fontWeight="medium"
+            color="gray.400"
+          >
+            No recipes found.
+          </Text>
+        ) : (
+          <SimpleGrid columns={{ base: 1, sm: 2, lg: 4 }} gap={8}>
+            {filteredRecipes.map((item) => {
+              const recipe = item.recipe;
 
-            return (
-              <Card.Root
-                key={recipe.label}
-                borderRadius="xl"
-                overflow="hidden"
-                cursor="pointer"
-                onClick={() => selectRecipe(recipe)}
-                _hover={{
-                  transform: "translateY(-4px)",
-                  boxShadow: "xl",
-                }}
-              >
-                <Image
-                  src={recipe.image}
-                  alt={recipe.label}
-                  h="240px"
-                  w="100%"
-                  objectFit="cover"
-                />
+              return (
+                <Card.Root
+                  key={recipe.label}
+                  borderRadius="xl"
+                  overflow="hidden"
+                  cursor="pointer"
+                  onClick={() => selectRecipe(recipe)}
+                  _hover={{
+                    transform: "translateY(-4px)",
+                    boxShadow: "xl",
+                  }}
+                >
+                  <Image
+                    src={recipe.image}
+                    alt={recipe.label}
+                    h="240px"
+                    w="100%"
+                    objectFit="cover"
+                  />
 
-                <Card.Body>
-                  <Stack
-                    direction="column"
-                    gap={3}
-                    align="stretch"
-                    textAlign="center"
-                  >
-                    <Text
-                      fontSize="sm"
-                      color={{ base: "gray.600", _dark: "gray.300" }}
-                      textTransform="uppercase"
-                      fontWeight="medium"
-                    >
-                      {recipe.mealType[0]}
-                    </Text>
-
-                    <Heading
-                      fontSize={{ base: "1xl", md: "2xl" }}
-                      fontWeight="medium"
-                      lineHeight="1.2"
-                    >
-                      {recipe.label}
-                    </Heading>
-
+                  <Card.Body>
                     <Stack
-                      direction="row"
-                      justify="center"
-                      flexWrap="wrap"
-                      textTransform="uppercase"
+                      direction="column"
+                      gap={3}
+                      align="stretch"
+                      textAlign="center"
                     >
-                      {recipe.healthLabels.includes("Vegan") && (
-                        <Badge colorPalette="purple" fontWeight="bold">
-                          Vegan
-                        </Badge>
-                      )}
-                      {recipe.healthLabels.includes("Vegetarian") && (
-                        <Badge colorPalette="purple" fontWeight="bold">
-                          Vegetarian
-                        </Badge>
-                      )}
-                      {recipe.healthLabels.includes("Pescatarian") && (
-                        <Badge colorPalette="purple" fontWeight="bold">
-                          Pescatarian
-                        </Badge>
-                      )}
-                    </Stack>
-
-                    <Stack
-                      direction="row"
-                      justify="center"
-                      flexWrap="wrap"
-                      textTransform="uppercase"
-                    >
-                      {recipe.dietLabels.map((dietLabel) => (
-                        <Badge
-                          key={dietLabel}
-                          colorPalette="green"
-                          fontWeight="bold"
-                        >
-                          {dietLabel}
-                        </Badge>
-                      ))}
-                    </Stack>
-
-                    <Text fontSize="md">
-                      <Text as="span" fontWeight="bold">
-                        Dish:{" "}
+                      <Text
+                        fontSize="sm"
+                        color={{ base: "gray.600", _dark: "gray.300" }}
+                        textTransform="uppercase"
+                        fontWeight="medium"
+                      >
+                        {recipe.mealType[0]}
                       </Text>
-                      {recipe.dishType[0]}
-                    </Text>
 
-                    {recipe.cautions.length > 0 && (
-                      <Box>
-                        <Text fontWeight="bold" mb={1} fontSize="md">
-                          Cautions:
+                      <Heading
+                        fontSize={{ base: "1xl", md: "2xl" }}
+                        fontWeight="medium"
+                        lineHeight="1.2"
+                      >
+                        {recipe.label}
+                      </Heading>
+
+                      <Stack
+                        direction="row"
+                        justify="center"
+                        flexWrap="wrap"
+                        textTransform="uppercase"
+                      >
+                        {recipe.healthLabels.includes("Vegan") && (
+                          <Badge colorPalette="purple" fontWeight="bold">
+                            Vegan
+                          </Badge>
+                        )}
+                        {recipe.healthLabels.includes("Vegetarian") && (
+                          <Badge colorPalette="purple" fontWeight="bold">
+                            Vegetarian
+                          </Badge>
+                        )}
+                        {recipe.healthLabels.includes("Pescatarian") && (
+                          <Badge colorPalette="purple" fontWeight="bold">
+                            Pescatarian
+                          </Badge>
+                        )}
+                      </Stack>
+
+                      <Stack
+                        direction="row"
+                        justify="center"
+                        flexWrap="wrap"
+                        textTransform="uppercase"
+                      >
+                        {recipe.dietLabels.map((dietLabel) => (
+                          <Badge
+                            key={dietLabel}
+                            colorPalette="green"
+                            fontWeight="bold"
+                          >
+                            {dietLabel}
+                          </Badge>
+                        ))}
+                      </Stack>
+
+                      <Text fontSize="md">
+                        <Text as="span" fontWeight="bold">
+                          Dish:{" "}
                         </Text>
-                        <Stack
-                          direction="row"
-                          justify="center"
-                          flexWrap="wrap"
-                          textTransform="uppercase"
-                        >
-                          {recipe.cautions.map((caution) => (
-                            <Badge
-                              key={caution}
-                              colorPalette="red"
-                              fontWeight="bold"
-                            >
-                              {caution}
-                            </Badge>
-                          ))}
-                        </Stack>
-                      </Box>
-                    )}
-                  </Stack>
-                </Card.Body>
-              </Card.Root>
-            );
-          })}
-        </SimpleGrid>
+                        {recipe.dishType[0]}
+                      </Text>
+
+                      {recipe.cautions.length > 0 && (
+                        <Box>
+                          <Text fontWeight="bold" mb={1} fontSize="md">
+                            Cautions:
+                          </Text>
+                          <Stack
+                            direction="row"
+                            justify="center"
+                            flexWrap="wrap"
+                            textTransform="uppercase"
+                          >
+                            {recipe.cautions.map((caution) => (
+                              <Badge
+                                key={caution}
+                                colorPalette="red"
+                                fontWeight="bold"
+                              >
+                                {caution}
+                              </Badge>
+                            ))}
+                          </Stack>
+                        </Box>
+                      )}
+                    </Stack>
+                  </Card.Body>
+                </Card.Root>
+              );
+            })}
+          </SimpleGrid>
+        )}
       </Box>
     </Box>
   );

@@ -148,7 +148,7 @@ return (labelMatch || healthLabelMatch) && filterMatch;
                 cursor="pointer"
                 onClick={() => selectRecipe(recipe)}
                 _hover={{
-                  transform: "translateY(-10px)",
+                  transform: "translateY(-4px)",
                   boxShadow: "xl",
                 }}
               >

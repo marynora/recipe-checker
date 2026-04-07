@@ -17,6 +17,9 @@ import { ColorModeButton } from "../components/ui/color-mode";
 export const RecipeListPage = ({ selectRecipe }) => {
   const [searchField, setSearchField] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("all");
+  
+  const filters = ["all", "vegan", "vegetarian", "pescatarian"];
+  
   const recipes = data.hits;
 
   const filteredRecipes = recipes.filter((item) => {
@@ -83,69 +86,27 @@ return (labelMatch || healthLabelMatch) && filterMatch;
           mt={-2}
           mb={10}
         >
-          <Badge
-            px={3}
-            py={2}
-            fontSize="sm"
-            cursor="pointer"
-            bg={
-              selectedFilter === "all"
-                ? { base: "purple.300", _dark: "purple.500" }
-                : { base: "gray.200", _dark: "gray.600" }
-            }
-            color={{ base: "gray.800", _dark: "white" }}
-            onClick={() => setSelectedFilter("all")}
-          >
-            All
-          </Badge>
 
-          <Badge
-            px={3}
-            py={2}
-            fontSize="sm"
-            cursor="pointer"
-            bg={
-              selectedFilter === "vegan"
-                ? { base: "purple.300", _dark: "purple.500" }
-                : { base: "gray.200", _dark: "gray.600" }
-            }
-            color={{ base: "gray.800", _dark: "white" }}
-            onClick={() => setSelectedFilter("vegan")}
-          >
-            Vegan
-          </Badge>
+          {filters.map((filter) => (
+            <Badge
+              key={filter}
+              px={3}
+              py={2}
+              fontSize="lg"
+              borderRadius="md"
+              cursor="pointer"
+              bg={
+                selectedFilter === filter
+                  ? { base: "purple.300", _dark: "purple.500" }
+                  : { base: "gray.200", _dark: "gray.600" }
+              }
+              color={{ base: "gray.800", _dark: "white" }}
+              onClick={() => setSelectedFilter(filter)}
+            >
+              {filter.charAt(0).toUpperCase() + filter.slice(1)}
+            </Badge>
+          ))}
 
-          <Badge
-            px={3}
-            py={2}
-            fontSize="sm"
-            cursor="pointer"
-            bg={
-              selectedFilter === "vegetarian"
-                ? { base: "purple.300", _dark: "purple.500" }
-                : { base: "gray.200", _dark: "gray.600" }
-            }
-            color={{ base: "gray.800", _dark: "white" }}
-            onClick={() => setSelectedFilter("vegetarian")}
-          >
-            Vegetarian
-          </Badge>
-
-          <Badge
-            px={3}
-            py={2}
-            fontSize="sm"
-            cursor="pointer"
-            bg={
-              selectedFilter === "pescatarian"
-                ? { base: "purple.300", _dark: "purple.500" }
-                : { base: "gray.200", _dark: "gray.600" }
-            }
-            color={{ base: "gray.800", _dark: "white" }}
-            onClick={() => setSelectedFilter("pescatarian")}
-          >
-            Pescatarian
-          </Badge>
         </Stack>
 
         {filteredRecipes.length === 0 ? (
